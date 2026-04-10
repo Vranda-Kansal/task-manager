@@ -69,13 +69,10 @@ PORT=5000
 MONGO_URI=mongodb://localhost:27017/taskmanager
 ```
 
-**Replace `MONGO_URI` in this format:**
+**Replace `MONGO_URI` in this format and fill your credentials replace whole along with <>:**
 ```
 # Example:
 MONGO_URI=mongodb+srv://<username>:<password>@<cluster-name>.mongodb.net/<database-name>?retryWrites=true&w=majority
-
-# Your actual connection string (replace placeholders):
-# MONGO_URI=mongodb+srv://your_username:your_password@your-cluster.mongodb.net/taskmanager?retryWrites=true&w=majority
 ```
 
 **Run this to start server**
