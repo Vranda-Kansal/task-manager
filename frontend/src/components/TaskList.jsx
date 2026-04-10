@@ -1,17 +1,15 @@
 import axios from "axios";
 import { useState } from "react";
+import BASE_URL from "../config/api";
 
 function TaskList({ tasks, setTasks, setError }) {
   const [loadingId, setLoadingId] = useState(null);
   const updateTask = async (taskId, status) => {
     setLoadingId(taskId);
     try {
-      const updatedTask = await axios.patch(
-        `http://localhost:5000/tasks/${taskId}`,
-        {
-          completed: !status,
-        },
-      );
+      const updatedTask = await axios.patch(`${BASE_URL}/tasks/${taskId}`, {
+        completed: !status,
+      });
       setTasks((prev) => {
         return prev.map((task) =>
           task._id === taskId ? updatedTask.data.data : task,
@@ -27,7 +25,7 @@ function TaskList({ tasks, setTasks, setError }) {
   const handleDelete = async (taskId) => {
     setLoadingId(taskId);
     try {
-      await axios.delete(`http://localhost:5000/tasks/${taskId}`);
+      await axios.delete(`${BASE_URL}/tasks/${taskId}`);
       setTasks((prev) => {
         return prev.filter((task) => task._id !== taskId);
       });

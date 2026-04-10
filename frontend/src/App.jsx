@@ -4,6 +4,7 @@ import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 import ThemeToggle from "./components/ThemeToggle";
 import TaskFilter from "./components/TaskFilter";
+import BASE_URL from "./config/api";
 
 function App() {
   const [userid, setuserId] = useState(null);
@@ -14,7 +15,7 @@ function App() {
   const fetchTasks = async (userId) => {
     setError(null);
     try {
-      const response = await fetch(`http://localhost:5000/tasks/${userId}`);
+      const response = await fetch(`${BASE_URL}/tasks/${userId}`);
       const data = await response.json();
       if (data.success) {
         setTasks(data.data);

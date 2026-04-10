@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useRef, useState } from "react";
+import BASE_URL from "../config/api";
 
 function TaskForm({ userId, setError, setTasks }) {
   const [loading, setLoading] = useState(false);
@@ -16,7 +17,7 @@ function TaskForm({ userId, setError, setTasks }) {
     }
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:5000/tasks", {
+      const res = await axios.post(`${BASE_URL}/tasks`, {
         userId: userId,
         title: task,
       });
